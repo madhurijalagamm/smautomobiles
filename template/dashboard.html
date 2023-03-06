@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Database</title>
+</head>
+<body>
+    <h1>Health Records</h1>
+    <center><h3>Enter Record</h3></center>
+        <form action="#" method="post">
+            {% csrf_token %}
+            {% load static %}
+            <center><div class="container">
+                
+                
+                <label for='sno'><b>Sno : </b></label>
+		        <input type='number' placeholder="Enter sno" name='sno' required><t></t>
+
+                <label for='name'><b>Name : </b></label>
+		        <input type='text' placeholder="Enter name" name='name' required><t></t>
+
+                <label for='regid'><b>Reg ID : </b></label>
+		        <input type='number' placeholder="Enter your reg id" name='regid' required><t></t>
+
+                <label for='branch'><b>Branch : </b></label>
+		        <input type='text' placeholder="whats your branch" name='branch' required><t></t>
+
+                <label for='email'><b>Email : </b></label>
+		        <input type='text' placeholder="enter valid email" name='email' required><t></t>
+
+                <label for='mobile'><b>Mobile : </b></label>
+		        <input type='number' placeholder="mobileno" name='mobile' required><t></t>
+                <br>
+                <br>
+
+            	<button type="submit"><b>Submit</b></button><br>     
+            	
+            </div></center>
+            <hr>
+            <h3>Records</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>SNo.</th>
+                <th>Name</th>
+                <th>RegId</th>
+                <th>Branch</th>
+                <th>Email</th>
+                <th>Mobile No.</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.sno }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.regid }}</td>
+                    <td>{{ row.branch }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.mobile }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

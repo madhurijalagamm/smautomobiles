@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <center><h1> MEDICINE</h1></center><hr>
+    <style>
+        h1{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .medicine_box 
+        {
+            border: 1px solid black;
+            outline-style: solid;
+            outline-color: red;
+            outline-width: thin;
+            padding: 20px;
+            margin: 20px;
+            float: left;
+            
+        }
+        .medicine_box button 
+        {
+            background-color: brown;
+            border: none;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            box-shadow: 2px 2px 2px #888888;
+        }
+        .medicine_box button :hover
+        {
+            background-color:   brown;
+            color: black;
+            cursor: pointer;
+        }
+      
+
+        p {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for j in data %}
+    <div class="medicine_box">
+    <center><p class ='name'><b>{{ j.name }} </b> </center></p><hr>
+      <p class='price'>Price: {{ j.price }} </p>
+      <p class='quantity'>Quantity: {{ j.quantity }} </p>
+      <p class='instock'>In-Stock: {{ j.instock }} </p>
+      <p class = 'store'>Store: {{ j.store }}</p> <br>
+      <button>Add to Cart</button>
+      <!-- <button onclick="changeText()">Add to cart</button>
+      <p id="Cart">{{ j.incart }}</p>
+      <script> function changeText() {
+        if(document.getElementById("Cart").innerHTML == "True") 
+        { 
+            document.getElementById("Cart").innerHTML = "False";
+
+        }
+        if(document.getElementById("Cart").innerHTML == "False") 
+        { 
+            document.getElementById("Cart").innerHTML = "True";
+
+        }      
+    }
+</script> -->
+      
+      
+  </div>
+  
+    {% endfor %}
+  
+</body>
+</html>
