@@ -1,0 +1,147 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - How to render a minimalistic 3D car with texture (Three.js + HTML Canvas)</title>
+  <link rel="stylesheet" href="../static/style_car.css">
+
+</head>
+<style>
+  body{
+    background-color: white;
+  }
+  #tagline {
+  z-index: 50;
+  display: block;
+  position: fixed;
+  bottom: 18px;
+  right: 5px;
+  color: white;
+  padding: 25px;
+  font-family: "Roboto Mono", monospace;
+}
+/* #title {
+  z-index: 50;
+  display: block;
+  position: fixed;
+  top: 35px;
+  left: 5px;
+  color: white;
+  padding: 25px;
+  font-family: "Roboto Mono", monospace;
+} */
+#get-started {
+  font-size: 2em;
+  font-weight: 50;
+  z-index: 50;
+  display:block;
+  position:fixed;
+  bottom: 175px;
+  left: 590px;
+  color: white;
+  padding: 25px;
+  font-family: "Roboto Mono", monospace;
+}
+
+
+</style>
+<body>
+
+  <div class="title">
+    <h1 data-value="automobile systems" id="heading">automobile systems</h1>
+      <script>const letters = "abcdefghijklmnopqrstuvwxyz";
+    
+        document.querySelector("h1").onmouseover = event => {
+        
+          let iteration = 0;
+          const interval = setInterval(() => {
+            event.target.innerText = event.target.innerText.split("")
+              .map((letter, index) => {
+                 if(index < iteration){
+                   return event.target.dataset.value[index];
+                 }
+                 return letters[Math.floor(Math.random() * 26)];
+              })
+              .join("");
+        
+            if (iteration >= event.target.dataset.value.length) {
+              clearInterval(interval);
+            }
+        
+            iteration += 1 / 2;
+          }, 30);
+        
+        };
+        
+        document.querySelector("h1").ontouchover = event => {
+        
+          let iteration = 0;
+          const interval = setInterval(() => {
+            event.target.innerText = event.target.innerText.split("")
+              .map((letter, index) => {
+                 if(index < iteration){
+                   return event.target.dataset.value[index];
+                 }
+                 return letters[Math.floor(Math.random() * 26)];
+              })
+              .join("");
+        
+            if (iteration >= event.target.dataset.value.length) {
+              clearInterval(interval);
+            }
+        
+            iteration += 1 / 2;
+          }, 30);
+        
+        };</script>
+      <style>
+     
+    #heading {
+      font-size: 4em;
+      text-align: center;
+      background: #000;
+      z-index: 50;
+      position: absolute;
+      left: 385px;
+      color: white;
+      font-family: "Roboto Mono", monospace;
+    }
+      </style>
+    
+    </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js'></script><script  src="../static/script_car.js"></script>
+
+  <div class="get-started" id = "get-started">
+    {% if user.is_authenticated %}
+    
+  <li class="nav-item active">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+  </li>
+  
+
+  <li class="nav-item active">
+    <a class="nav-link" href="{% url 'logout' %}">Accessories</a>
+  </li>
+
+  <li>
+    <a href="{% url 'profile' %}" class="action_btn">
+       <i class="fa fa-user" aria-hidden="true" style="color: aliceblue;"></i>Profile</a>
+
+    <div class="toggle_btn">
+      <i class="fa-solid fa-bars"></i>
+      </div>
+    </li>
+                  
+                  
+{% else %}
+      <center><a class="nav-link" href="{% url 'register' %}">get started</a></center>
+
+{% endif%}
+  </div>
+
+  <div id="tagline" target="_blank" href="https://www.freecodecamp.org/news/p/52a32ef6-b7e1-4827-9773-86198a5e8a39/">
+    Style meets function with our car accessories
+  </div>
+</body>
+
+</html>

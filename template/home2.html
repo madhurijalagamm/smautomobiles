@@ -1,0 +1,104 @@
+{% extends 'base.html'%}
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> -->
+{%block content%}
+
+  <!-- <h1>Health and Awareness System</h1>
+    <h2>welcome to home page!</h2>
+    <p>You are logged in as {{ user.username }}.</p>
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+  </form> -->
+  
+  <script  type="importmap">{
+    "imports": {
+      "three": "https://threejs.org/build/three.module.js",
+      "three/addons/": "https://threejs.org/examples/jsm/"
+    }
+  }
+</script><!-- Remove this when import maps will be widely supported -->
+<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/three@0.130.2/build/three.min.js"></script>      
+      <!-- <script src="../textures/GLTFLoader.js"></script>
+      <script src="OrbitControls.js"></script> -->
+
+      <script>
+
+
+
+      import * as THREE from 'three';
+      import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+      import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+      import {GUI} from 'three/addons/libs/lil-gui.module.min.js';
+    
+
+
+        let scene, camera, renderer;
+  
+        function init() {
+  
+          scene = new THREE.Scene();
+          scene.background = new THREE.Color(0xdddddd);
+  
+          camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,5000);
+          camera.rotation.y = 45/180*Math.PI;
+          camera.position.x = 800;
+          camera.position.y = 100;
+          camera.position.z = 1000;
+  
+          controls = new THREE.OrbitControls(camera);
+          controls.addEventListener('change', renderer);
+  
+          hlight = new THREE.AmbientLight (0x404040,100);
+          scene.add(hlight);
+  
+          directionalLight = new THREE.DirectionalLight(0xffffff,100);
+          directionalLight.position.set(0,1,0);
+          directionalLight.castShadow = true;
+          scene.add(directionalLight);
+          light = new THREE.PointLight(0xc4c4c4,10);
+          light.position.set(0,300,500);
+          scene.add(light);
+          light2 = new THREE.PointLight(0xc4c4c4,10);
+          light2.position.set(500,100,0);
+          scene.add(light2);
+          light3 = new THREE.PointLight(0xc4c4c4,10);
+          light3.position.set(0,100,-500);
+          scene.add(light3);
+          light4 = new THREE.PointLight(0xc4c4c4,10);
+          light4.position.set(-500,300,500);
+          scene.add(light4);
+  
+          renderer = new THREE.WebGLRenderer({antialias:true});
+          renderer.setSize(window.innerWidth,window.innerHeight);
+          document.body.appendChild(renderer.domElement);
+  
+          let loader = new THREE.GLTFLoader();
+
+          
+
+          loader.load('scene.gltf', function(gltf){
+            car = gltf.scene.children[0];
+            car.scale.set(0.5,0.5,0.5);
+            scene.add(gltf.scene);
+            animate();
+          });
+        }
+        function animate() {
+          renderer.render(scene,camera);
+          requestAnimationFrame(animate);
+        }
+        init();
+      </script>
+
+
+{% endblock%}

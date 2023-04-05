@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Accessories</h1>
+  
+  <div class="filters">
+    <h2 style="color: white;">Filters:</h2>
+    <ul>
+      <li><a href="#">Brand</a></li>
+      <li><a href="#">Price</a></li>
+      <li><a href="#">Type</a></li>
+    </ul>
+  </div>
+  
+  <div class="products">
+    <div class="product">
+      <img src="https://picsum.photos/200" alt="Product Image">
+      <h3>Product Name</h3>
+      <p>Price: $50</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="https://picsum.photos/200" alt="Product Image">
+      <h3>Product Name</h3>
+      <p>Price: $75</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="https://picsum.photos/200" alt="Product Image">
+      <h3>Product Name</h3>
+      <p>Price: $100</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <!-- more products -->
+  </div>
+
+  <script>
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        alert('Added to cart!');
+        // Add code to actually add the item to the cart
+      });
+    });
+  </script>
+{% endblock %}
